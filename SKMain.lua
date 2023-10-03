@@ -2347,7 +2347,7 @@ RunService.RenderStepped:Connect(function()
         end)
     else 
         pcall(function()
-            Selection.Adornee = nil;
+            Selection.Adornee = nil
         end)
     end
     if sk:GetComponent("atf").STATUS == true then
