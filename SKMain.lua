@@ -1,5 +1,6 @@
 --[[----------------------------------------------------------------------------------------|
 #  > File Name: SKMain.lua
+#  > Last Edit: 2023-12-30 14:58
 --]]-------------------------------------------------------------------------------------------|
 
 --\\ Loading Handler //--
@@ -205,7 +206,7 @@ function sk:RandomGenerate(length)
     	[4] = "d",
     	[5] = "e",
     	[6] = "f",
-    	[7] = "g", 
+    	[7] = "g",
     	[8] = "h",
     	[9] = "i",
     	[10] = "j",
@@ -225,16 +226,16 @@ function sk:RandomGenerate(length)
     	[24] = "x",
     	[25] = "y",
     	[26] = "z",
-        [27] = "1",
-        [28] = "2",
-        [29] = "3",
-        [30] = "4",
-        [31] = "0",
-        [32] = "5",
-        [33] = "6",
-        [34] = "7",
-        [35] = "8",
-        [36] = "9",
+      [27] = "1",
+      [28] = "2",
+      [29] = "3",
+      [30] = "4",
+      [31] = "0",
+      [32] = "5",
+      [33] = "6",
+      [34] = "7",
+      [35] = "8",
+      [36] = "9",
     }
 
     local count = 0
@@ -1071,19 +1072,19 @@ sk:CreateCommand("clicktp", "Teleports to players cursor.", "ctp", function()
             --# what is this why is this here ?? ? ?
             workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
             
-            local jamiedeaves = Instance.new("Part")
-            jamiedeaves.CanCollide = false
-            jamiedeaves.Anchored = true
-            jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-            jamiedeaves.Transparency = 1
+            local TemporaryPart = Instance.new("Part")
+            TemporaryPart.CanCollide = false
+            TemporaryPart.Anchored = true
+            TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+            TemporaryPart.Transparency = 1
 
-            workspace.CurrentCamera.CameraSubject = jamiedeaves
+            workspace.CurrentCamera.CameraSubject = TemporaryPart
             Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
             Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
             task.wait(0.07)
             workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
             workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-            jamiedeaves:Destroy()
+            TemporaryPart:Destroy()
             sk.Temp.cWeldPart:Destroy()
             if sk.PlayerRig == "R6" then
                 Player.Character.HumanoidRootPart.CFrame = sk.Temp.cWeldPart.CFrame + sk.Settings.ClickTPIncrementR6
@@ -1108,19 +1109,19 @@ sk:CreateCommand("clicktp", "Teleports to players cursor.", "ctp", function()
             sk.Temp.cWeld.Part0 = sk.Temp.cWeldPart
             sk.Temp.cWeld.Part1 = mouseTar
 
-            local jamiedeaves = Instance.new("Part")
-            jamiedeaves.CanCollide = false
-            jamiedeaves.Anchored = true
-            jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-            jamiedeaves.Transparency = 1
+            local TemporaryPart = Instance.new("Part")
+            TemporaryPart.CanCollide = false
+            TemporaryPart.Anchored = true
+            TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+            TemporaryPart.Transparency = 1
 
-            workspace.CurrentCamera.CameraSubject = jamiedeaves
+            workspace.CurrentCamera.CameraSubject = TemporaryPart
             Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
             Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
             task.wait(0.07)
             workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
             workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-            jamiedeaves:Destroy()
+            TemporaryPart:Destroy()
             sk.Temp.cWeldPart:Destroy()
             if sk.PlayerRig == "R6" then
                 Player.Character.HumanoidRootPart.CFrame = sk.Temp.cWeldPart.CFrame + sk.Settings.ClickTPIncrementR6
@@ -1154,19 +1155,19 @@ sk:CreateCommand("undoclicktp", "Undo player's previous clicktp.", "uctp", funct
     if sk.Temp.Pos3 == nil then return end
     if sk:GetLSetting("synctp").STATUS == true then
         sk.Temp.Pos2 = Player.Character.HumanoidRootPart.CFrame
-        local jamiedeaves = Instance.new("Part")
-        jamiedeaves.CanCollide = false
-        jamiedeaves.Anchored = true
-        jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-        jamiedeaves.Transparency = 1
+        local TemporaryPart = Instance.new("Part")
+        TemporaryPart.CanCollide = false
+        TemporaryPart.Anchored = true
+        TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+        TemporaryPart.Transparency = 1
 
-        workspace.CurrentCamera.CameraSubject = jamiedeaves
+        workspace.CurrentCamera.CameraSubject = TemporaryPart
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         task.wait(0.07)
         workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
         workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-        jamiedeaves:Destroy()
+        TemporaryPart:Destroy()
         Player.Character.HumanoidRootPart.CFrame = sk.Temp.Pos3
     else
         sk.Temp.Pos2 = Player.Character.HumanoidRootPart.CFrame
@@ -1177,19 +1178,19 @@ end, false)
 sk:CreateCommand("redoclicktp", "Redo player's previous click tp.", "rctp", function()
     if sk.Temp.Pos2 == nil then return end
     if sk:GetLSetting("synctp").STATUS == true then
-        local jamiedeaves = Instance.new("Part")
-        jamiedeaves.CanCollide = false
-        jamiedeaves.Anchored = true
-        jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-        jamiedeaves.Transparency = 1
+        local TemporaryPart = Instance.new("Part")
+        TemporaryPart.CanCollide = false
+        TemporaryPart.Anchored = true
+        TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+        TemporaryPart.Transparency = 1
 
-        workspace.CurrentCamera.CameraSubject = jamiedeaves
+        workspace.CurrentCamera.CameraSubject = TemporaryPart
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         task.wait(0.07)
         workspace.CurrentCamera.CameraType = Enum.CameraType.Custom
         workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-        jamiedeaves:Destroy()
+        TemporaryPart:Destroy()
         Player.Character.HumanoidRootPart.CFrame = sk.Temp.Pos2
     else
         Player.Character.HumanoidRootPart.CFrame = sk.Temp.Pos2
@@ -1199,17 +1200,17 @@ end, false)
 sk:CreateCommand("goto", "Teleports to a player.", "tp", function(arg)
     local plr = sk:GetPlayer(arg)
     if sk:GetLSetting("syncgoto").STATUS == true then
-        local jamiedeaves = Instance.new("Part")
-        jamiedeaves.CanCollide = false
-        jamiedeaves.Anchored = true
-        jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-        jamiedeaves.Transparency = 1
-        workspace.CurrentCamera.CameraSubject = jamiedeaves
+        local TemporaryPart = Instance.new("Part")
+        TemporaryPart.CanCollide = false
+        TemporaryPart.Anchored = true
+        TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+        TemporaryPart.Transparency = 1
+        workspace.CurrentCamera.CameraSubject = TemporaryPart
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
         task.wait(0.07)
         workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-        jamiedeaves:Destroy()
+        TemporaryPart:Destroy()
         Player.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
     else
         Player.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
@@ -1463,7 +1464,7 @@ sk:CreateCommand("pathfindfollow", "Path finds to player.", "pff", function(arg)
                         sk:GetCommand("pathfindfollow").TOGGLED = false
                     end
                 end)
-                function huntersAssCancer()
+                function PathFindFunction()
                     repeat task.wait() 
                         if sk:GetCommand("pathfindfollow").TOGGLED == true then
                             local _success, _response = pcall(function()
@@ -1481,11 +1482,11 @@ sk:CreateCommand("pathfindfollow", "Path finds to player.", "pff", function(arg)
                             end)
                         end
                         --if not success then
-                            huntersAssCancer()
+                            PathFindFunction()
                         --end
                     until sk:GetCommand("pathfindfollow").TOGGLED == false
                 end
-                huntersAssCancer()
+                PathFindFunction()
             else
                 coroutine.yield()
             end
@@ -1526,17 +1527,17 @@ sk:CreateCommand("flash", "Flash like z vanish", "flas", function()
             while task.wait(0.01) do
                 if sk:GetCommand("flash").TOGGLED == true then
                     local oldPos = Player.Character.HumanoidRootPart.CFrame
-                    local jamiedeaves = Instance.new("Part")
-                    jamiedeaves.CanCollide = false
-                    jamiedeaves.Anchored = true
-                    jamiedeaves.CFrame = Player.Character:FindFirstChild("Head").CFrame
-                    jamiedeaves.Transparency = 1
-                    workspace.CurrentCamera.CameraSubject = jamiedeaves
+                    local TemporaryPart = Instance.new("Part")
+                    TemporaryPart.CanCollide = false
+                    TemporaryPart.Anchored = true
+                    TemporaryPart.CFrame = Player.Character:FindFirstChild("Head").CFrame
+                    TemporaryPart.Transparency = 1
+                    workspace.CurrentCamera.CameraSubject = TemporaryPart
                     Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
                     Player.Character.HumanoidRootPart.CFrame = CFrame.new(Player.Character.HumanoidRootPart.CFrame.X, 99999999, Player.Character.HumanoidRootPart.CFrame.Z)
                     task.wait(0.07)
                     workspace.CurrentCamera.CameraSubject = Player.Character:FindFirstChild("Humanoid")
-                    jamiedeaves:Destroy()
+                    TemporaryPart:Destroy()
                     Player.Character.HumanoidRootPart.CFrame = oldPos
                     if sk:GetCommand("flash").TOGGLED == false then
                         break
