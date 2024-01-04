@@ -1012,6 +1012,7 @@ sk:CreateCommand("say", "Say something in chat", "say", function(arg)
 end, true)
 
 sk:CreateCommand("rejoin", "Rejoins the game", "rj", function()
+    -- SYNAPSE FUNCTION DETECTED GRRRRRRR FUCK SYNAPSE 
     if syn.queue_on_teleport then
         syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
     end
@@ -1024,6 +1025,7 @@ end, true)
 
 sk:CreateCommand("gotoplace", "Teleports you to a place.", "goplace", function(arg)
     if arg then
+        --SYNAPSE FUNCTION DETECTED GRRRR FUCK SYNAPSE
         if syn.queue_on_teleport then
             syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
         end
