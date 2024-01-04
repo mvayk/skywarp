@@ -2285,10 +2285,6 @@ Selection.OutlineColor = sk.Settings.HighlightColor
 Selection.FillTransparency = 1
 Selection.Parent = sk.PartStorage
 Selection.DepthMode = Enum.HighlightDepthMode.Occluded
-abcxyz = Drawing.new('Circle'); abcxyz.Transparency = 1; abcxyz.Thickness = 1.5; abcxyz.Visible = true; abcxyz.Color =
-Color3.fromRGB(255, 255, 255); abcxyz.Filled = false; abcxyz.Radius = 16
-abc2 = Drawing.new('Circle'); abc2.Transparency = 1; abc2.Thickness = 1.5; abc2.Visible = true; abc2.Color = Color3
-.fromRGB(0, 255, 21); abc2.Filled = false; abc2.Radius = 8
 
 --\\ Runtime Handler //--
 RunService.RenderStepped:Connect(function()
