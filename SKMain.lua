@@ -130,12 +130,12 @@ local TeleportService  = game:GetService("TeleportService")
 local PlayerService     = game:GetService("Players")
 local LightingService   = game:GetService("Lighting")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local CoreGUI           = game:GetService("CoreGui")
 local StarterGui        = game:GetService("StarterGui")
+local PlayerGui         = PlayerService.LocalPlayer.PlayerGui
 
 --\\ Secure GUI //--
 local OverlaySK = Instance.new("ScreenGui")
-OverlaySK.Parent = CoreGUI
+OverlaySK.Parent = PlayerGui
 OverlaySK.Name = "!SKYWARP!"
 sk.OverlayUI = OverlaySK
 
@@ -1012,11 +1012,7 @@ sk:CreateCommand("say", "Say something in chat", "say", function(arg)
 end, true)
 
 sk:CreateCommand("rejoin", "Rejoins the game", "rj", function()
-    -- SYNAPSE FUNCTION DETECTED GRRRRRRR FUCK SYNAPSE 
-    if syn.queue_on_teleport then
-        syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
-    end
-    TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, Player)
+
 end, true)
 
 sk:CreateCommand("f3x", "Building Tools", "f3x", function()
@@ -1024,13 +1020,6 @@ sk:CreateCommand("f3x", "Building Tools", "f3x", function()
 end, true)
 
 sk:CreateCommand("gotoplace", "Teleports you to a place.", "goplace", function(arg)
-    if arg then
-        --SYNAPSE FUNCTION DETECTED GRRRR FUCK SYNAPSE
-        if syn.queue_on_teleport then
-            syn.queue_on_teleport('game:GetService("ReplicatedFirst"):RemoveDefaultLoadingScreen()')
-        end
-        TeleportService:TeleportToPlaceInstance(arg, Player)
-    end
 end, false)
 
 sk:CreateCommand("oldconsole", "Turns the new console to the old console.", "oldconsole", function()
