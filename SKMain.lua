@@ -840,39 +840,6 @@ UserInputService.InputBegan:Connect(function(input, processed)
 		return
 	else
 		if input.KeyCode == sk.BindSettings.FocusBind then
-			if UI.Enabled == true then
-				MainFrame.Transparency = 0
-				Decor.BackgroundTransparency = 1
-				Decor.Transparency = 1
-				UI.Enabled = false
-
-				local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-					.Out), {
-						Transparency = 1
-					})
-				trans:Play()
-				trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-					BackgroundTransparency = 1,
-					Transparency = 1,
-				})
-				trans:Play()
-			elseif UI.Enabled == false then
-				MainFrame.Transparency = 1
-				Decor.BackgroundTransparency = 1
-				Decor.Transparency = 0
-				UI.Enabled = true
-				local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-					.Out), {
-						Transparency = 0
-					})
-				trans:Play()
-				trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-					BackgroundTransparency = 1,
-					Transparency = 0
-				})
-				trans:Play()
-				task.wait(0.0000001)
-				Text:CaptureFocus()
 			end
 		end
 	end
@@ -2133,6 +2100,41 @@ sk:AddBind("transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true,
 	elseif toggle.TOGGLED == false then
 		sk:ExecuteCommand("transport")
 	end
+end)
+
+sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBind, true, function()
+    if UI.Enabled == true then
+        MainFrame.Transparency = 0
+        Decor.BackgroundTransparency = 1
+        Decor.Transparency = 1
+        UI.Enabled = false
+        local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
+            .Out), {
+                Transparency = 1
+            })
+        trans:Play()
+        trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+            BackgroundTransparency = 1,
+            Transparency = 1,
+        })
+        trans:Play()
+    elseif UI.Enabled == false then
+        MainFrame.Transparency = 1
+        Decor.BackgroundTransparency = 1
+        Decor.Transparency = 0
+        UI.Enabled = true
+        local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
+            .Out), {
+                Transparency = 0
+            })
+        trans:Play()
+        trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+            BackgroundTransparency = 1,
+            Transparency = 0
+        })
+        trans:Play()
+        task.wait(0.0000001)
+        Text:CaptureFocus()
 end)
 
 sk:AddBind("clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
