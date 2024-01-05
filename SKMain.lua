@@ -342,6 +342,7 @@ function sk:AddBind(holdable, name, desc, alias, uisenum, toggled, beginFunc, ex
 		})
 		UserInputService.InputBegan:Connect(function(input, processed)
 			if processed then
+                print(input)
 				return
 			else
 				if input.KeyCode == uisenum then
@@ -591,14 +592,10 @@ function sk:GetPlayers()
 	return #PlayerService:GetPlayers()
 end
 
-print("5")
-
 --\\ Setting handlers //--
 --\\ Live Settings //--
 sk:AddLiveSetting("synctp", "Stops server tweening when you click tp, is experimental", true)
 sk:AddLiveSetting("syncgoto", "Stops server tweening when you use goto command (is experimental)", true)
-
-print("6")
 
 --\\ Component Registers //--
 sk:AddComponent("antifall", "Prevents the player from ragdolling & tripping.", "atf", true)
@@ -606,8 +603,6 @@ sk:AddComponent("highlightselection", "Highlights the part your cursor is over."
 sk:AddComponent("autowalkspeed", "Constantly sets the player's walkspeed", "aws", false)
 sk:AddComponent("autojumppower", "Constantly sets the player's jumppower", "ajp", false)
 sk:AddComponent("cursoricon", "Changes the player's cursor.", "cid", false)
-
-print("7")
 
 --\\ Get Player Rig //--
 if Player.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
@@ -617,8 +612,6 @@ elseif Player.Character.Humanoid.RigType == Enum.HumanoidRigType.R15 then
 	sk.PlayerRig = "R15"
 	sk:Log("PlayerRig", "Player is R15")
 end
-
-print("8")
 
 --\\ UI //--
 Player.PlayerGui:SetTopbarTransparency(1)
@@ -741,8 +734,6 @@ UIGradient_2.Parent = RainbowMe_2
 UICorner_2.CornerRadius = UDim.new(0.100000001, 0)
 UICorner_2.Parent = PingCount
 
-print("9")
-
 --\\ Ping Handler //--
 --local PerformanceStats = CoreGUI.RobloxGui:FindFirstChild("PerformanceStats", true)
 --local PingValue
@@ -835,8 +826,6 @@ Decor.TextWrapped = true
 
 local Text = CMDBar
 local UI = SKCMD
-
-print("10")
 
 task.spawn(function()
 	while task.wait() do
