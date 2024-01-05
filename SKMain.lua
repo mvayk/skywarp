@@ -1607,7 +1607,7 @@ sk:CreateCommand("transport", "Allow you to travel fast yet precisely", "ts", fu
 
 		Player:GetMouse().WheelForward:Connect(function()
 			if enabled.TOGGLED == true then
-				distance -= 10
+				distance = distance - 10
 			else
 				return
 			end
@@ -1615,7 +1615,7 @@ sk:CreateCommand("transport", "Allow you to travel fast yet precisely", "ts", fu
 
 		Player:GetMouse().WheelBackward:Connect(function()
 			if enabled.TOGGLED == true then
-				distance += 10
+				distance = distance + 10
 			else
 				return
 			end
