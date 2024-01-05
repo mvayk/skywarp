@@ -2093,7 +2093,9 @@ sk:AddBind("transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true,
 end)
 
 sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBind, true, function()
+    print("1")
 	if UI.Enabled == true then
+        print("2")
 		MainFrame.Transparency = 0
 		Decor.BackgroundTransparency = 1
 		Decor.Transparency = 1
@@ -2108,7 +2110,9 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
 			Transparency = 1,
 		})
 		trans:Play()
+        print("3")
 	elseif UI.Enabled == false then
+        print("4")
 		MainFrame.Transparency = 1
 		Decor.BackgroundTransparency = 1
 		Decor.Transparency = 0
@@ -2125,7 +2129,9 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
 		trans:Play()
 		task.wait(0.0000001)
 		Text:CaptureFocus()
+        print("5")
 		end
+    print("6")
 	end)
 
 sk:AddBind("clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
