@@ -19,7 +19,7 @@ end
 
 --\\ Static Configuration //--
 sk = _G.SK
-sk.Ver = "1.4"
+sk.Ver = "1.4 Netflix CE"
 sk.Commands = {}
 sk.Binds = {}
 sk.Waypoints = {}
@@ -55,7 +55,7 @@ sk.Settings = {
 }
 
 sk.BindSettings = {
-	["FocusBind"] = Enum.KeyCode.U,
+	["FocusBind"] = Enum.KeyCode.RightControl,
 	["ClickTP"] = Enum.KeyCode.V,
 	["UndoClickTP"] = Enum.KeyCode.Z,
 	["RedoClickTP"] = Enum.KeyCode.X,
