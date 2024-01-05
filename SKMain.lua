@@ -1868,16 +1868,18 @@ local cmdlp = game.Players.LocalPlayer
 end, false)
 
 sk:CreateCommand("unesp", "Disables ESP", "unes", function()
-    ESPNEnabled = false
+ESPNEnabled = false
 	pcall(function()
-	for i,v in pairs(game.Players:GetPlayers()) do
-		if v.Character then
-			if v.Character.Head:FindFirstChild("ESP") then
-				v.Character.Head.ESP:Destroy()
+		for i,v in pairs(game.Players:GetPlayers()) do
+			if v.Character then
+				if v.Character.Head:FindFirstChild("ESP") then
+					v.Character.Head.ESP:Destroy()
+				end
 			end
 		end
-	end
+	end)
 end, false)
+
 
 sk:CreateCommand("sit", "Makes the player sit.", "sit", function()
 	Player.Character.Humanoid.Sit = true
