@@ -6,8 +6,6 @@
 
 --\\ Loading Handler //--
 
-warn("skywarp debug")
-local a, b = pcall(function()
 _G.SK = {}
 _G.SK.Loaded = false
 if _G.SK.Loaded == true then
@@ -2274,7 +2272,3 @@ RunService.RenderStepped:Connect(function()
 		end)
 	end
 end)
-		
-end)
-print(a)
-print(b)
