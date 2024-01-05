@@ -2123,7 +2123,6 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
 			Transparency = 0
 		})
 		trans:Play()
-        print("6")
 		task.wait(0.0000001)
 		Text:CaptureFocus()
 	end
