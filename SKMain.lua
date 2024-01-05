@@ -31,6 +31,7 @@ sk.Bases = {}
 sk.Waypoints = {}
 sk.CommandHistory = {}
 sk.GameOverride = { 292439477 }
+sk.GalaticCenter = CFrame.new(0, 2147483647, 0)
 
 --\\ Dynamic Configuration //--
 sk.Settings = {
@@ -596,6 +597,7 @@ sk:AddComponent("highlightselection", "Highlights the part your cursor is over."
 sk:AddComponent("autowalkspeed", "Constantly sets the player's walkspeed", "aws", false)
 sk:AddComponent("autojumppower", "Constantly sets the player's jumppower", "ajp", false)
 sk:AddComponent("cursoricon", "Changes the player's cursor.", "cid", false)
+sk:AddComponent("anticorpse", "Teleports you as you die to hide your corpse", "aco", true)
 
 --\\ Get Player Rig //--
 if Player.Character.Humanoid.RigType == Enum.HumanoidRigType.R6 then
@@ -880,69 +882,68 @@ sk:CreateCommand("help", "List all commands and binds.", "help", function()
 	end
 end, true)
 
-sk:CreateCommand("enablebind", "Control Bind statuses", "eb", function(arg)
-	for _i, v in pairs(sk.Binds) do
-		if v.NAME == arg or v.ALIAS == arg then
-			v.STATUS = true
-		elseif arg == "all" or arg == "All" then
-			for _i, x in pairs(sk.Binds) do
-				x.STATUS = true
-			end
-		end
-	end
+sk:CreateCommand("bind", "Modify binds", "b", function(type, sname)
+  for _i, v in pairs(sk.Binds) do
+    if type == "enable" or type == "e" then
+      if v.NAME == sname or v.ALIAS == sname then
+        if v.NAME == "focusbar" or v.ALIAs == "fub" then return end
+        v.STATUS = true
+      elseif sname == "all" or sname == "All" then
+        if v.NAME == "focusbar" or v.ALIAS == "fub" then return end
+        v.STATUS = true 
+      end
+    else if type == "disable" or type == "d" then
+      if v.NAME == sname or v.ALIAS then
+        if v.NAME == "focusbar" or v.ALIAS == "fub" then return end
+        v.STATUS = false
+      elseif sname == "all" or sname == "All" then
+        if v.NAME == "focusbar" or v.ALIAS == "fub" then return end
+        v.STATUS = false
+      end
+    end
+  end
+  end
 end, false)
 
-sk:CreateCommand("disablebind", "Control Bind statuses", "db", function(arg)
-	for _i, v in pairs(sk.Binds) do
-		if v.NAME == arg or v.ALIAS == arg then
-			v.STATUS = false
-		elseif arg == "all" or arg == "All" then
-			for _i, x in pairs(sk.Binds) do
-				x.STATUS = false
-			end
-		end
-	end
+sk:CreateCommand("component", "Modify components", "c", function(type, sname)
+  if type == "disable" or type == "d" then
+    for _i, v in pairs(sk.Components) do
+      if v.NAME == sname then
+        v.STATUS = false
+      elseif sname == "all" or sname == "All" then
+        for i,x in pairs(sk.Components) do
+          x.STATUS = false
+        end
+      end
+    end
+  elseif type == "enable" or type == "e" then
+    for _i, v in pairs(sk.Components) do
+      if v.NAME == sname then
+        v.STATUS = true 
+      elseif sname == "all" or sname == "All" then
+        for i,x in pairs(sk.Components) do
+          x.STATUS = true
+        end
+      end
+    end
+  end
 end, false)
 
-sk:CreateCommand("enablecomponent", "Control Component statuses", "ec", function(arg)
-	for _i, v in pairs(sk.Components) do
-		if v.NAME == arg or v.ALIAS == arg then
-			v.STATUS = true
-		elseif arg == "all" or arg == "All" then
-			for _i, x in pairs(sk.Components) do
-				x.STATUS = true
-			end
-		end
-	end
+sk:CreateCommand("livesetting", "Change Live Settings", "ls", function(type, sname)
+  if type == "disable" or type == "d" then
+    for _i, v in pairs(sk.LiveSettings) do
+      if v.NAME == sname then
+        v.STATUS = false
+      end
+    end
+  elseif type == "enable" or type == "e" then
+    for _i, v in pairs(sk.LiveSettings) do
+      if v.NAME == sname then
+        v.STATUS = true
+      end
+    end
+  end
 end, false)
-
-sk:CreateCommand("disablecomponent", "Control Component statuses", "dc", function(arg)
-	for _i, v in pairs(sk.Components) do
-		if v.NAME == arg or v.ALIAS == arg then
-			v.STATUS = false
-		elseif arg == "all" or arg == "All" then
-			for _i, x in pairs(sk.Components) do
-				x.STATUS = false
-			end
-		end
-	end
-end, false)
-
-sk:CreateCommand("enablesetting", "Enable live Settings", "eset", function(sname)
-	for _i, v in pairs(sk.LiveSettings) do
-		if v.NAME == sname then
-			v.STATUS = true
-		end
-	end
-end)
-
-sk:CreateCommand("disablesetting", "Disable live Settings", "dset", function(sname)
-	for _i, v in pairs(sk.LiveSettings) do
-		if v.NAME == sname then
-			v.STATUS = false
-		end
-	end
-end)
 
 sk:CreateCommand("say", "Say something in chat", "say", function(arg)
 	local message = arg
@@ -2349,4 +2350,11 @@ RunService.RenderStepped:Connect(function()
 			Player.Character.Humanoid.JumpPower = sk.Settings.AutoJumpPowerValue
 		end)
 	end
+  if sk:GetComponent("aco").STATUS == true then
+    pcall(function()
+      if Player.Character.Humanoid.Health <= 0.9 then
+        Player.Character.HumanoidRootPart.CFrame = sk.GalaticCenter
+      end
+    end)
+  end
 end)
