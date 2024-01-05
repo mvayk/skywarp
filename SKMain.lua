@@ -55,7 +55,7 @@ sk.Settings = {
 }
 
 sk.BindSettings = {
-	["FocusBind"] = Enum.KeyCode.RightControl,
+	["FocusBind"] = Enum.KeyCode.RightAlt,
 	["ClickTP"] = Enum.KeyCode.V,
 	["UndoClickTP"] = Enum.KeyCode.Z,
 	["RedoClickTP"] = Enum.KeyCode.X,
