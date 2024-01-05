@@ -2,7 +2,7 @@
 #  > File Name: SKMain.lua
 #  > Last Edit: 2023-12-30 14:58
 --]]
-     -------------------------------------------------------------------------------------------|
+-------------------------------------------------------------------------------------------|
 
 --\\ Loading Handler //--
 _G.SK = {}
@@ -322,7 +322,7 @@ function sk:GetPlayer(args, tbl)
       for _, v in pairs(tbl) do
         if v ~= cmdlp then
           local math = (v.Character:FindFirstChild("HumanoidRootPart").Position - cmdlp.Character.HumanoidRootPart.Position)
-          .magnitude
+              .magnitude
           if math < 30 then
             vAges[#vAges + 1] = v
           end
@@ -334,7 +334,7 @@ function sk:GetPlayer(args, tbl)
       for _, v in pairs(tbl) do
         if v ~= cmdlp then
           local math = (v.Character:FindFirstChild("HumanoidRootPart").Position - cmdlp.Character.HumanoidRootPart.Position)
-          .magnitude
+              .magnitude
           if math > 30 then
             vAges[#vAges + 1] = v
           end
@@ -879,7 +879,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         UI.Enabled = false
 
         local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-        .Out), {
+          .Out), {
           Transparency = 1
         })
         trans:Play()
@@ -894,7 +894,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
         Decor.Transparency = 0
         UI.Enabled = true
         local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-        .Out), {
+          .Out), {
           Transparency = 0
         })
         trans:Play()
@@ -1595,12 +1595,12 @@ sk:CreateCommand("transport", "Allow you to travel fast yet precisely", "ts", fu
     local focused = false
     local focusedPart = nil
 
-    local forward = false     --# W
-    local left = false        --# A
-    local right = false       --# D
-    local back = false        --# S
-    local up = false          --# E
-    local down = false        --# Q
+    local forward = false --# W
+    local left = false    --# A
+    local right = false   --# D
+    local back = false    --# S
+    local up = false      --# E
+    local down = false    --# Q
 
     camPart = Instance.new("Part")
     camPart.Parent = sk.PartStorage
@@ -1619,7 +1619,7 @@ sk:CreateCommand("transport", "Allow you to travel fast yet precisely", "ts", fu
       RunService.RenderStepped:Connect(function()
         if enabled.TOGGLED == true then
           workspace.CurrentCamera.CFrame = CFrame.new(camPart.Position + (camPart.CFrame.UpVector * distance)) *
-          CFrame.Angles(math.rad(-90), 0, 0)
+              CFrame.Angles(math.rad(-90), 0, 0)
 
           Player.Character.HumanoidRootPart.CFrame = camPart.CFrame * CFrame.new(0, 5000, 0)
           Player.Character.Humanoid.Sit = false
@@ -2127,7 +2127,7 @@ end)
 
 --\\ ChatLog Handers //--
 sk:ChatLog("[Skywarp] >> Loaded SKMain.lua", Color3.fromRGB(120, 150, 222), Enum.Font.SourceSansBold, Enum.FontSize
-.Size8)
+  .Size8)
 
 PlayerService.PlayerAdded:Connect(function(Name)
   sk:ChatLog("[Skywarp] >> " .. tostring(Name) .. " " .. "[" .. tostring(Name.DisplayName) .. "]" .. " Has joined.",
@@ -2306,11 +2306,11 @@ RunService.RenderStepped:Connect(function()
       Player.Character.Humanoid.JumpPower = sk.Settings.AutoJumpPowerValue
     end)
   end
-  if sk:GetComponent("fovcircle").STATUS == true then
-    abcxyz.Transparency = 1
-    abcxyz.Position = sk:GetMousePosition() + Vector2.new(0, 36)
-  else
-    abcxyz.Transparency = 0
-    abcxyz.Position = sk:GetMousePosition() + Vector2.new(0, 36)
-  end
+  -- if sk:GetComponent("fovcircle").STATUS == true then
+  --   abcxyz.Transparency = 1
+  --   abcxyz.Position = sk:GetMousePosition() + Vector2.new(0, 36)
+  -- else
+  --   abcxyz.Transparency = 0
+  --   abcxyz.Position = sk:GetMousePosition() + Vector2.new(0, 36)
+  -- end
 end)
