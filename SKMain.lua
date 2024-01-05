@@ -331,83 +331,77 @@ function sk:GetMousePosition()
 	return Vector2.new(Player:GetMouse().X, Player:GetMouse().Y)
 end
 
-function sk:AddBind(holdable, name, desc, alias, uisenum, toggled, beginFunc, exitFunc)
-	if holdable == false then
-		table.insert(sk.Binds, {
-			NAME = name,
-			DESC = desc,
-			ALIAS = alias,
-			STATUS = toggled,
-			ENUM = uisenum,
-		})
-		UserInputService.InputBegan:Connect(function(input, processed)
-			if processed then
-                print(input)
-				return
-			else
-				if input.KeyCode == uisenum then
-					for _i, v in pairs(sk.Binds) do
-						if v.NAME == name or v.ALIAS == name then
-							if v.STATUS == true then
-								coroutine.resume(coroutine.create(function()
-									beginFunc()
-									if v.STATUS == false then
-										coroutine.yield()
-									end
-								end))
-							end
+function sk:AddBind(name, desc, alias, uisenum, toggled, beginFunc, exitFunc)
+	table.insert(sk.Binds, {
+		NAME = name,
+		DESC = desc,
+		ALIAS = alias,
+		STATUS = toggled,
+		ENUM = uisenum,
+	})
+	UserInputService.InputBegan:Connect(function(input, processed)
+		if processed then
+			return
+		else
+			if input.KeyCode == uisenum then
+				for _i, v in pairs(sk.Binds) do
+					if v.NAME == name or v.ALIAS == name then
+						if v.STATUS == true then
+							coroutine.resume(coroutine.create(function()
+								beginFunc()
+								if v.STATUS == false then
+									coroutine.yield()
+								end
+							end))
 						end
 					end
 				end
 			end
-		end)
-	elseif holdable == true then
-		table.insert(sk.Binds, {
-			HOLDABLE = holdable,
-			NAME = name,
-			DESC = desc,
-			ALIAS = alias,
-			STATUS = toggled,
-			ENUM = uisenum,
-			ACTIVATED = false,
-		})
-		UserInputService.InputBegan:Connect(function(input, processed)
-			if processed then
-				return
-			else
-				if input.KeyCode == uisenum then
-					for _i, v in pairs(sk.Binds) do
-						if v.NAME == name or v.ALIAS == name then
-							if v.STATUS == true and v.ACTIVATED == false then
-								v.ACTIVATED = true
-								coroutine.resume(coroutine.create(function()
-									beginFunc()
-								end))
-							end
+		end
+	end)
+end
+
+function sk:AddHoldableBind(name, desc, alias, uisenum, toggled, beginFunc, exitFunc)
+	table.insert(sk.Binds, {
+		NAME = name,
+		DESC = desc,
+		ALIAS = alias,
+		STATUS = toggled,
+		ENUM = uisenum,
+		ACTIVATED = false,
+	})
+	UserInputService.InputBegan:Connect(function(input,processed)
+		if processed then return else
+			if input.KeyCode == uisenum then
+				for _i,v in pairs(sk.Binds) do
+					if v.NAME == name or v.ALIAS == name then
+						if v.STATUS == true and v.ACTIVATED == false then
+							v.ACTIVATED = true
+							coroutine.resume(coroutine.create(function()
+								beginFunc()
+							end))
 						end
 					end
 				end
 			end
-		end)
-		UserInputService.InputEnded:Connect(function(input, processed)
-			if processed then
-				return
-			else
-				if input.KeyCode == uisenum then
-					for _i, v in pairs(sk.Binds) do
-						if v.NAME == name or v.ALIAS == name then
-							if v.STATUS == true and v.ACTIVATED == true then
-								v.ACTIVATED = false
-								coroutine.resume(coroutine.create(function()
-									exitFunc()
-								end))
-							end
+		end
+	end)
+	UserInputService.InputEnded:Connect(function(input,processed)
+		if processed then return else
+			if input.KeyCode == uisenum then
+				for _i,v in pairs(sk.Binds) do
+					if v.NAME == name or v.ALIAS == name then
+						if v.STATUS == true and v.ACTIVATED == true then
+							v.ACTIVATED = false
+							coroutine.resume(coroutine.create(function()
+								exitFunc()
+							end))
 						end
 					end
 				end
 			end
-		end)
-	end
+		end
+	end)
 end
 
 function sk:SetBindToggle(name, toggled)
@@ -2029,18 +2023,18 @@ sk:CreateCommand("switchbase", "Switch current base.", "sb", function(arg)
 end)
 
 --\\ Bind Registers //--
-sk:AddBind(true, "speedup", "Speeds the player up.", "sp", sk.BindSettings.Speedup, true, function()
+sk:AddHoldableBind("speedup", "Speeds the player up.", "sp", sk.BindSettings.Speedup, true, function()
 	sk:ExecuteCommand("speedup")
 end, function()
 	sk:ExecuteCommand("unspeedup")
 	sk:ExecuteCommand("breakvelocity")
 end)
 
-sk:AddBind(false, "breakvelocity", "Breaks the player's velocity.", "bv", sk.BindSettings.BreakVelocity, true, function()
+sk:AddBind("breakvelocity", "Breaks the player's velocity.", "bv", sk.BindSettings.BreakVelocity, true, function()
 	sk:ExecuteCommand("breakvelocity")
 end)
 
-sk:AddBind(false, "transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true, function()
+sk:AddBind("transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true, function()
 	local toggle = sk:GetCommand("transport")
 
 	if toggle.TOGGLED == true then
@@ -2050,24 +2044,23 @@ sk:AddBind(false, "transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport
 	end
 end)
 
-sk:AddBind(false, "clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
+sk:AddBind("clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
 	sk:ExecuteCommand("clicktp")
 end)
 
-sk:AddBind(false, "undoclicktp", "Undo player's previous click tp.", "uctp", sk.BindSettings.UndoClickTP, true,
-	function()
-		sk:ExecuteCommand("undoclicktp")
-	end)
+sk:AddBind("undoclicktp", "Undo player's previous click tp.", "uctp", sk.BindSettings.UndoClickTP, true, function()
+    sk:ExecuteCommand("undoclicktp")
+end)
 
-sk:AddBind(false, "redoclicktp", "Redo player's undo click tp.", "rctp", sk.BindSettings.RedoClickTP, true, function()
+sk:AddBind( "redoclicktp", "Redo player's undo click tp.", "rctp", sk.BindSettings.RedoClickTP, true, function()
 	sk:ExecuteCommand("redoclicktp")
 end)
 
-sk:AddBind(false, "destroypart", "Destroy the part.", "dp", sk.BindSettings.DestroyPart, true, function()
+sk:AddBind("destroypart", "Destroy the part.", "dp", sk.BindSettings.DestroyPart, true, function()
 	sk:ExecuteCommand("destroypart")
 end)
 
-sk:AddBind(false, "noclip", "Allows the player to phase through walls", "nc", sk.BindSettings.Noclip, true, function()
+sk:AddBind("noclip", "Allows the player to phase through walls", "nc", sk.BindSettings.Noclip, true, function()
 	local n = sk:GetCommand("noclip")
 	if n.TOGGLED == false then
 		sk:ExecuteCommand("noclip")
@@ -2077,7 +2070,7 @@ sk:AddBind(false, "noclip", "Allows the player to phase through walls", "nc", sk
 	end
 end)
 
-sk:AddBind(false, "profly", "Allows the player to fly with parts.", "pf", sk.BindSettings.Profly, true, function()
+sk:AddBind("profly", "Allows the player to fly with parts.", "pf", sk.BindSettings.Profly, true, function()
 	local n = sk:GetCommand("profly").TOGGLED
 	if n == false then
 		sk:ExecuteCommand("profly")
