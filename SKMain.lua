@@ -2278,23 +2278,23 @@ Selection.FillTransparency = 1
 Selection.Parent = sk.PartStorage
 Selection.DepthMode = Enum.HighlightDepthMode.Occluded
 
+for _i, v in pairs(sk.OverlayUI:GetChildren()) do
+  v.Parent.Name = tostring(sk:RandomGenerate(100))
+  v.Name = tostring(sk:RandomGenerate(100))
+end
+
+for _i, v in pairs(sk.Storage:GetChildren()) do
+  v.Name = tostring(sk:RandomGenerate(100))
+end
+
+for _i, v in pairs(SKCMD:GetDescendants()) do
+  v.Name = tostring(sk:RandomGenerate(100))
+end
+
+sk.PartStorage.Name = tostring(sk:RandomGenerate(100))
+
 --\\ Runtime Handler //--
 RunService.RenderStepped:Connect(function()
-	for _i, v in pairs(sk.OverlayUI:GetChildren()) do
-		v.Parent.Name = tostring(sk:RandomGenerate(100))
-		v.Name = tostring(sk:RandomGenerate(100))
-	end
-
-	for _i, v in pairs(sk.Storage:GetChildren()) do
-		v.Name = tostring(sk:RandomGenerate(100))
-	end
-
-	for _i, v in pairs(SKCMD:GetDescendants()) do
-		v.Name = tostring(sk:RandomGenerate(100))
-	end
-
-	sk.PartStorage.Name = tostring(sk:RandomGenerate(100))
-
 	for _i, v in pairs(sk.Bases) do
 		if v.TOGGLED == false then
 			if v.MODEL.Parent ~= sk.RStorage then
