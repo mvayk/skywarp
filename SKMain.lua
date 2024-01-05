@@ -120,6 +120,7 @@ local OverlaySK         = Instance.new("ScreenGui")
 OverlaySK.Parent        = PlayerGui
 OverlaySK.Name          = "!SKYWARP!"
 OverlaySK.ResetOnSpawn  = false
+OverlaySK.Enabled       = true
 sk.OverlayUI            = OverlaySK
 
 --\\ Part Storage //--
@@ -143,6 +144,7 @@ sk.RStorage             = RStorage
 _G.SK.Loaded            = true
 local SKCMD             = Instance.new("ScreenGui")
 SKCMD.ResetOnSpawn      = false
+SKCMD.Enabled = true
 
 --\\ Player Variables //--
 local Player            = PlayerService.LocalPlayer
