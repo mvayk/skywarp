@@ -1748,7 +1748,7 @@ sk:CreateCommand("unnoclip", "Disables Noclip", "unnc", function()
 end, false)
 
 sk:CreateCommand("esp", "Enables ESP from Prisma", "es", function()
-local cmdlp = game.Players.LocalPlayer
+	local cmdlp = game.Players.LocalPlayer
 	local cmdp = game.Players
 	ESPNEnabled = false
 	TrackN = false
@@ -1784,16 +1784,16 @@ local cmdlp = game.Players.LocalPlayer
 		coroutine.resume(coroutine.create(function()
 			while task.wait() do
 				pcall(function()
-				if xHead.Parent.Humanoid.Health <= 0 then
-					coroutine.yield()
-				end
+					if xHead.Parent.Humanoid.Health <= 0 then
+						coroutine.yield()
+					end
 
-				if xPlayer:IsFriendsWith(plr.UserId) then
-					ESPText.TextColor3 = colour
-				else
-					ESPText.TextColor = xPlayer.TeamColor
-				end
-			end)
+					if xPlayer:IsFriendsWith(plr.UserId) then
+						ESPText.TextColor3 = colour
+					else
+						ESPText.TextColor = xPlayer.TeamColor
+					end
+				end)
 			end
 		end))
 	end
@@ -1825,7 +1825,7 @@ local cmdlp = game.Players.LocalPlayer
 end, false)
 
 sk:CreateCommand("unesp", "Disables ESP", "unes", function()
-ESPNEnabled = false
+	ESPNEnabled = false
 	pcall(function()
 		for i,v in pairs(game.Players:GetPlayers()) do
 			if v.Character then
@@ -2093,47 +2093,47 @@ sk:AddBind("transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true,
 end)
 
 sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBind, true, function()
-    if UI.Enabled == true then
-        MainFrame.Transparency = 0
-        Decor.BackgroundTransparency = 1
-        Decor.Transparency = 1
-        UI.Enabled = false
-        local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-            .Out), {
-                Transparency = 1
-            })
-        trans:Play()
-        trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-            BackgroundTransparency = 1,
-            Transparency = 1,
-        })
-        trans:Play()
-    elseif UI.Enabled == false then
-        MainFrame.Transparency = 1
-        Decor.BackgroundTransparency = 1
-        Decor.Transparency = 0
-        UI.Enabled = true
-        local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
-            .Out), {
-                Transparency = 0
-            })
-        trans:Play()
-        trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
-            BackgroundTransparency = 1,
-            Transparency = 0
-        })
-        trans:Play()
-        task.wait(0.0000001)
-        Text:CaptureFocus()
-	end
-end)
+	if UI.Enabled == true then
+		MainFrame.Transparency = 0
+		Decor.BackgroundTransparency = 1
+		Decor.Transparency = 1
+		UI.Enabled = false
+		local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
+			.Out), {
+				Transparency = 1
+			})
+		trans:Play()
+		trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+			BackgroundTransparency = 1,
+			Transparency = 1,
+		})
+		trans:Play()
+	elseif UI.Enabled == false then
+		MainFrame.Transparency = 1
+		Decor.BackgroundTransparency = 1
+		Decor.Transparency = 0
+		UI.Enabled = true
+		local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
+			.Out), {
+				Transparency = 0
+			})
+		trans:Play()
+		trans = TweenService:Create(Decor, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {
+			BackgroundTransparency = 1,
+			Transparency = 0
+		})
+		trans:Play()
+		task.wait(0.0000001)
+		Text:CaptureFocus()
+		end
+	end)
 
 sk:AddBind("clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
 	sk:ExecuteCommand("clicktp")
 end)
 
 sk:AddBind("undoclicktp", "Undo player's previous click tp.", "uctp", sk.BindSettings.UndoClickTP, true, function()
-    sk:ExecuteCommand("undoclicktp")
+	sk:ExecuteCommand("undoclicktp")
 end)
 
 sk:AddBind( "redoclicktp", "Redo player's undo click tp.", "rctp", sk.BindSettings.RedoClickTP, true, function()
