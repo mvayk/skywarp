@@ -835,16 +835,6 @@ task.spawn(function()
 	end
 end)
 
-UserInputService.InputBegan:Connect(function(input, processed)
-	if processed then
-		return
-	else
-		if input.KeyCode == sk.BindSettings.FocusBind then
-			end
-		end
-	end
-end)
-
 Text.FocusLost:Connect(function()
 	sk:CommandInputable(Text.Text, Text)
 	MainFrame.Transparency = 0
