@@ -47,7 +47,6 @@ sk.Settings = {
 	["HighlightColor"] = Color3.fromRGB(255, 255, 255),
 	["AutoWalkSpeedValue"] = 16,
 	["AutoJumpPowerValue"] = 50,
-	["DeleteAllBarriers"] = true,
 	["R6ProflyIncrement"] = Vector3.new(0, 3.5, 0),
 	["R15ProflyIncrement"] = Vector3.new(0, 3.35, 0),
 	["ProflyColor"] = BrickColor.new("Really red"),
@@ -153,11 +152,7 @@ local MouseId           = Player:GetMouse().Icon
 sk.PlayerRig            = nil;
 
 --\\ Setting handlers //--
-if sk.Settings.AntiAFK == true then
-	Player.Idled:Connect(function()
-	end)
-end
-		
+
 --\\ Functions //--
 function sk:Log(source, text)
 	if source == nil then
