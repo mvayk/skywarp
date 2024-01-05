@@ -55,7 +55,7 @@ sk.Settings = {
 }
 
 sk.BindSettings = {
-	["FocusBind"] = Enum.KeyCode.RightAlt,
+	["FocusBind"] = Enum.KeyCode.U,
 	["ClickTP"] = Enum.KeyCode.V,
 	["UndoClickTP"] = Enum.KeyCode.Z,
 	["RedoClickTP"] = Enum.KeyCode.X,
@@ -144,14 +144,11 @@ sk.RStorage             = RStorage
 _G.SK.Loaded            = true
 local SKCMD             = Instance.new("ScreenGui")
 SKCMD.ResetOnSpawn      = false
-SKCMD.Enabled = true
 
 --\\ Player Variables //--
 local Player            = PlayerService.LocalPlayer
 local MouseId           = Player:GetMouse().Icon
 sk.PlayerRig            = nil;
-
-
 
 --\\ Functions //--
 function sk:Log(source, text)
@@ -852,7 +849,7 @@ Text.FocusLost:Connect(function()
 	})
 	trans:Play()
 	task.wait(0.1)
-	UI.Enabled = false
+	SKCMD.Enabled = false
 end)
 
 --\\ Command Registers //--
@@ -2095,11 +2092,11 @@ sk:AddBind("transport", "Oribtal Cannon", "ts", sk.BindSettings.Transport, true,
 end)
 
 sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBind, true, function()
-	if UI.Enabled == true then
+	if SKCMD.Enabled == true then
 		MainFrame.Transparency = 0
 		Decor.BackgroundTransparency = 1
 		Decor.Transparency = 1
-		UI.Enabled = false
+		SKCMD.Enabled = false
 		local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
 			.Out), {
 				Transparency = 1
@@ -2110,11 +2107,12 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
 			Transparency = 1,
 		})
 		trans:Play()
-	elseif UI.Enabled == false then
+	elseif SKCMD.Enabled == false or SKCMD.Enabled == "false" or not SKCMD.Enabled then
 		MainFrame.Transparency = 1
 		Decor.BackgroundTransparency = 1
 		Decor.Transparency = 0
-		UI.Enabled = true
+		SKCMD.Enabled = true
+
 		local trans = TweenService:Create(MainFrame, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection
 			.Out), {
 				Transparency = 0
@@ -2125,6 +2123,7 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
 			Transparency = 0
 		})
 		trans:Play()
+        print("6")
 		task.wait(0.0000001)
 		Text:CaptureFocus()
 	end
