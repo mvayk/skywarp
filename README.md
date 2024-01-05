@@ -10,5 +10,5 @@ Personal Clientsided utility tool for Roblox.
 - Cosemetics (getobjects)
 - Can't be executed with autoexec (obvious reasons)
 - rejoin() and gotoplace()
-- Loadstring stuff
+- Loadstring stuff (unnamed esp & dex)
 - Other things I can't remember 
