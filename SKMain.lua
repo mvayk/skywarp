@@ -2352,7 +2352,7 @@ RunService.RenderStepped:Connect(function()
 	end
   if sk:GetComponent("aco").STATUS == true then
     pcall(function()
-      if Player.Character.Humanoid.Health <= 0.9 then
+      if Player.Character.Humanoid.Health <= 0.90 then
         Player.Character.HumanoidRootPart.CFrame = sk.GalaticCenter
       end
     end)
