@@ -9,4 +9,5 @@ Personal Clientsided utility tool for Roblox.
 - Bases (getobjects)
 - Cosemetics (getobjects)
 - Can't be executed with autoexec (obvious reasons)
+- Loadstring stuff
 - Other things I can't remember 
