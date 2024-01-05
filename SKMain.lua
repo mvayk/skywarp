@@ -2125,6 +2125,7 @@ sk:AddBind("focusbar", "Focuses the commandbar", "fub", sk.BindSettings.FocusBin
         trans:Play()
         task.wait(0.0000001)
         Text:CaptureFocus()
+	end
 end)
 
 sk:AddBind("clicktp", "Teleport Player to mouse.", "ctp", sk.BindSettings.ClickTP, true, function()
