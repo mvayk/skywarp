@@ -152,8 +152,6 @@ sk.PlayerRig            = nil;
 --\\ Setting handlers //--
 if sk.Settings.AntiAFK == true then
 	Player.Idled:Connect(function()
-		VirutalUser:CaptureController()
-		VirutalUser:ClickButton2(Vector2.new())
 	end)
 end
 
