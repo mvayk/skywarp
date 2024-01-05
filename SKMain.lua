@@ -157,19 +157,7 @@ if sk.Settings.AntiAFK == true then
 	Player.Idled:Connect(function()
 	end)
 end
-
-if sk.Settings.DeleteAllBarriers == true then
-	for _i, v in pairs(workspace:GetDescendants()) do
-		if v:IsA("BasePart") then
-			if v.Transparency == 1 and v.CanCollide == false then
-				if not v.Name == "Humanoid" or not v.Name == "HumanoidRootPart" then
-					v:Destroy()
-				end
-			end
-		end
-	end
-end
-
+		
 --\\ Functions //--
 function sk:Log(source, text)
 	if source == nil then
