@@ -27,10 +27,10 @@ sk.Components = {}
 sk.LiveSettings = {}
 sk.Cosemetics = {}
 sk.Bases = {}
-sk.Waypoints = {}
 sk.CommandHistory = {}
 sk.GameOverride = { 292439477 }
 sk.GalaticCenter = CFrame.new(0, 2147483647, 0)
+sk.TakingDamage = false
 
 --\\ Dynamic Configuration //--
 sk.Settings = {
