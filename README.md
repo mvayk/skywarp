@@ -12,3 +12,6 @@ Personal Clientsided utility tool for Roblox.
 - rejoin() and gotoplace()
 - Loadstring stuff (unnamed esp & dex)
 - Other things I can't remember 
+
+# Modifications
+- Changed command syntax for binds, components and livesettings
