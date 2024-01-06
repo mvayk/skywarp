@@ -23,7 +23,6 @@ sk = _G.SK
 sk.Ver = "1.4 Netflix CE"
 sk.Commands = {}
 sk.Binds = {}
-sk.Waypoints = {}
 sk.Components = {}
 sk.LiveSettings = {}
 sk.Cosemetics = {}
@@ -1384,7 +1383,7 @@ sk:CreateCommand("pathfindfollow", "Path finds to player.", "pff", function(arg)
 						sk:GetCommand("pathfindfollow").TOGGLED = false
 					end
 				end)
-				function PathFindFunction()
+				local function PathFindFunction()
 					repeat
 						task.wait()
 						if sk:GetCommand("pathfindfollow").TOGGLED == true then
@@ -1885,18 +1884,18 @@ end)
 
 --# Flying stuff (From IY)
 local FLYING = sk:GetCommand("fly")
-local vfly = sk:GetCommand("vfly")
+-- local vfly = sk:GetCommand("vfly")
 local QEfly = sk.Temp.QEFly
 local iyflyspeed = sk.Settings.FlySpeed
 local vehicleflyspeed = sk.Settings.VehicleFlySpeed
 
-local function sFLY()
+local function sFLY(vfly)
   local IYMouse = Player:GetMouse()
-	repeat wait() until Player and Player.Character and Player.Character.HumanoidRootPart and Player.Character.Humanoid 
-	repeat wait() until IYMous
+	repeat wait() until Player and Player.Character and Player.Character.HumanoidRootPart and Player.Character.Humanoid
+	repeat wait() until IYMouse
 	if flyKeyDown or flyKeyUp then flyKeyDown:Disconnect() flyKeyUp:Disconnect() end
 
-	local T = Player.Character 
+	local T = Player.Character.HumanoidRootPart
 	local CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
 	local lCONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
 	local SPEED = 0
@@ -1983,28 +1982,31 @@ function NOFLY()
 		Player.Character:FindFirstChildOfClass('Humanoid').PlatformStand = false
 	end
 	pcall(function() workspace.CurrentCamera.CameraType = Enum.CameraType.Custom end)
-
 end
 
 sk:CreateCommand("flyspeed", "Changes flight speed", "fspeed", function(arg)
   sk.Settings.FlySpeed = arg
-end)
+end, false)
 
 sk:CreateCommand("vehicleflyspeed", "Changes vehicle flight speed", "vflyspeed", function(arg)
   sk.Settings.VehicleFlySpeed = arg
 end, false)
 
 sk:CreateCommand("vehiclefly", "VFly (From IY)", "vfly", function()
-  if sk:GetCommand("vfly").TOGGLED == false then
-    sk:GetCommand("vfly").TOGGLED = true
-  end
+  sFLY(true)
 end, false)
 
 sk:CreateCommand("unvehiclefly", "Disables VFly (From IY)", "unvfly", function()
-  if sk:GetCommand("vfly").TOGGLED == true then
-    sk:GetCommand("vfly").TOGGLED = false 
-  end
+  NOFLY()
 end)
+
+sk:CreateCommand("fly", "Finally I added fly to this after like 15 years", "f", function()
+  sFLY(false)
+end, false)
+
+sk:CreateCommand("unfly", "Disables flight", "unf", function()
+  NOFLY()
+end, false)
 
 sk:CreateCommand("awsvalue", "Sets the autowalkspeed value", "awsv", function(arg)
 	sk.Settings.AutoWalkSpeedValue = arg
