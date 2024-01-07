@@ -13,8 +13,5 @@ Personal Clientsided utility tool for Roblox.
 - Loadstring stuff (unnamed esp & dex)
 - Other things I can't remember 
 
-<<<<<<< HEAD
-=======
 # Modifications
 - Changed command syntax for binds, components and livesettings
->>>>>>> 0b2276fc4371fea97e5044cc5a554982d5e32987
