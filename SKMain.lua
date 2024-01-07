@@ -30,7 +30,6 @@ sk.Bases = {}
 sk.CommandHistory = {}
 sk.GameOverride = { 292439477 }
 sk.GalaticCenter = CFrame.new(0, 2147483647, 0)
-sk.TakingDamage = false
 
 --\\ Dynamic Configuration //--
 sk.Settings = {
@@ -1430,6 +1429,8 @@ sk:CreateCommand("unlockworkspace", "Unlocks all workspace parts", "unlockws", f
 	end
 end)
 
+
+--# chang2
 sk:CreateCommand("breakvelocity", "Breaks the player's velocity", "bv", function()
 	for _i, v in pairs(Player.Character:GetDescendants()) do
 		if v:IsA("BasePart") then
